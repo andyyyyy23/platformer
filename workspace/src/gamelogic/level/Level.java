@@ -196,9 +196,41 @@ public class Level {
 	//#############################################################################################################
 	//Your code goes here! 
 	//Please make sure you read the rubric/directions carefully and implement the solution recursively!
+
+ 
+
+
 	private void water(int col, int row, Map map, int fullness) {
-		
-	}
+    if (col < 0 || col >= map.getTiles().length || row < 0 || row >= map.getTiles()[0].length) {
+        return;
+    }
+
+    Tile current = map.getTiles()[col][row];
+    if (current.isSolid() || current instanceof Water) {
+        return;
+    }
+
+    String[] waterTypes = {"Falling_water", "Quarter_water", "Half_water", "Full_water"};
+    String waterType = (fullness >= 0 && fullness <= 3) ? waterTypes[fullness] : "Full_water";
+    Water w = new Water(col, row, tileSize, tileset.getImage(waterType), this, fullness);
+    map.addTile(col, row, w);
+
+    if (row + 1 < map.getTiles()[0].length && !map.getTiles()[col][row + 1].isSolid()) {
+        water(col, row + 1, map, 0);
+        return;
+    }
+
+    if (fullness > 0) {
+        if (col + 1 < map.getTiles().length && !map.getTiles()[col + 1][row].isSolid()) {
+            water(col + 1, row, map, Math.max(1, fullness - 1));
+        }
+        if (col - 1 >= 0 && !map.getTiles()[col - 1][row].isSolid()) {
+            water(col - 1, row, map, Math.max(1, fullness - 1));
+        }
+    }
+}
+
+
 
 
 
