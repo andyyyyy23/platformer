@@ -194,15 +194,12 @@ public class Level {
 	
 	
 	//#############################################################################################################
-	//Your code goes here! 
-	//Please make sure you read the rubric/directions carefully and implement the solution recursively!
 
  
 
-
 	private void water(int col, int row, Map map, int fullness) {
     if (col < 0 || col >= map.getTiles().length || row < 0 || row >= map.getTiles()[0].length) {
-        return;
+        return; 
     }
 
     Tile current = map.getTiles()[col][row];
@@ -210,6 +207,7 @@ public class Level {
         return;
     }
 
+	//Sets the different types of water in the game
     String[] waterTypes = {"Falling_water", "Quarter_water", "Half_water", "Full_water"};
     String waterType = (fullness >= 0 && fullness <= 3) ? waterTypes[fullness] : "Full_water";
     Water w = new Water(col, row, tileSize, tileset.getImage(waterType), this, fullness);
@@ -219,7 +217,7 @@ public class Level {
         water(col, row + 1, map, 0);
         return;
     }
-
+//Checks to see if there is any water
     if (fullness > 0) {
         if (col + 1 < map.getTiles().length && !map.getTiles()[col + 1][row].isSolid()) {
             water(col + 1, row, map, Math.max(1, fullness - 1));
@@ -233,7 +231,7 @@ public class Level {
 
 
 
-
+ //Gets the graphics on the map
 	public void draw(Graphics g) {
 		g.translate((int) -camera.getX(), (int) -camera.getY());
 
