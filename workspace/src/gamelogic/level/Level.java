@@ -228,6 +228,10 @@ public class Level {
     }
 }
 
+
+//Pre condition: Col and Row fit into the given area
+// Post condition: The gas goes to certain places
+
 	private void addGas(int col, int row, Map map, int numSquaresToFill, ArrayList<Gas> placedThisRound) {
 		
 Gas g = new Gas(col, row,tileSize, tileset.getImage("play"), this, 0);
