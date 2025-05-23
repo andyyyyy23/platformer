@@ -8,7 +8,6 @@ import gamelogic.level.Level;
 public class Gas extends Tile{
 
 	private int intensity;
-	
 	public Gas(float x, float y, int size, BufferedImage image, Level level, int intensity) {
 		super(x, y, size, image, false, level);
 		this.intensity = intensity;
