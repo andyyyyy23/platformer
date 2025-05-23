@@ -46,7 +46,7 @@ public class Main extends GameBase implements PlayerDieListener, PlayerWinListen
 
 		levels = new LevelData[2];
 		try {
-			levels[0] = LeveldataLoader.loadLeveldata("/workspaces/platformer/workspace/maps/testing.txt");
+			levels[0] = LeveldataLoader.loadLeveldata("/workspaces/platformer/workspace/maps/Play.txt");
 			levels[1] = LeveldataLoader.loadLeveldata("/workspaces/platformer/workspace/maps/map1.txt");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -145,8 +145,10 @@ public class Main extends GameBase implements PlayerDieListener, PlayerWinListen
 		screenTransition.draw(g);
 	}
 
+
 	public void drawBackground(Graphics g) {
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0-MyWindow.getInsetY(), SCREEN_WIDTH, SCREEN_HEIGHT+MyWindow.getInsetY()*2);
 	}
 }
+
